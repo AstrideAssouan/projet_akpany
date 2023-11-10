@@ -39,7 +39,7 @@ export default {
                     date_limite ||
                     niveau_etude ||
                     remuneration ||
-                    secteur_activite
+                    secteur_activite 
                 )
             })
         },
@@ -132,7 +132,7 @@ export default {
             <div class="card-body">
                 <div class="mb-3 d-flex justify-content-between align-items-center">
                     <button type="button" class="btn btn-primary" data-bs-toggle="modal"
-                        data-bs-target="#publicModal">Ajouter un service</button>
+                        data-bs-target="#publicModal">Ajouter un emploi</button>
                     <div class="row">
                         <label for="search" class="col-sm-4 col-form-label">Recherche : </label>
                         <div class="col-sm-8">

@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('type_service', function (Blueprint $table) {
             $table->id();
             $table->string('libelle_type_ser');
+            $table->integer('tarif');
             $table->timestamps();
         });
     }

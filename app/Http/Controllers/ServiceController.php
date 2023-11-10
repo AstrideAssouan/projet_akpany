@@ -14,7 +14,8 @@ class ServiceController extends Controller
     public function createTypeService(Request $request)
     {
         $validatedData = $request->validate([
-            'libelle_type_ser' => 'required'
+            'libelle_type_ser' => 'required',
+            'tarif' => 'required'
         ]);
 
         if (TypeService::create($validatedData)) {
@@ -36,7 +37,8 @@ class ServiceController extends Controller
     public function editTypeService(Request $request)
     {
         $validatedData = $request->validate([
-            'libelle_type_ser'=>'required'
+            'libelle_type_ser' => 'required',
+            'tarif' => 'required'
         ]);
 
         if (TypeService::findOrFail($request->input('id'))->update($validatedData)) {
@@ -92,7 +94,6 @@ class ServiceController extends Controller
         $validatedData = $request->validate([
             'intitule_ser' => 'required',
             'description_ser' => 'required',
-            'tarif' => 'required',
             'id_type_ser' => 'required'
         ]);
 
@@ -117,7 +118,6 @@ class ServiceController extends Controller
         $validatedData = $request->validate([
             'intitule_ser' => 'required',
             'description_ser' => 'required',
-            'tarif' => 'required',
             'id_type_ser' => 'required'
         ]);
 
@@ -142,13 +142,18 @@ class ServiceController extends Controller
         $search = $request->input('id');
         $services = Service::select('*')->where(function ($query) use ($search) {
             $query->where('intitule_ser', 'LIKE', '%' . $search . '%')
-                ->orWhere('description_ser', 'LIKE', '%' . $search . '%')
-                ->orWhere('tarif', 'LIKE', '%' . $search . '%');
+                ->orWhere('description_ser', 'LIKE', '%' . $search . '%');
         })
             ->orderByDesc('id')
             ->paginate(10);
 
         return response()->json($services);
+    }
+
+    public function service()
+    {
+        $service = Service::all();
+        return response()->json($service);
     }
 
     // afficher un service
@@ -185,23 +190,24 @@ class ServiceController extends Controller
             'prenom' => 'required',
             'email' => 'required',
             'contact' => 'required',
-            'adresse' => 'required',
+            'besoin' => 'required',
+            'g-recaptcha-response' => 'required|captcha',
         ]);
 
         $service_id = $request->input('service_id');
 
-        if(Service::find($service_id)){
+        if (Service::find($service_id)) {
             $client = Client::create($validatedData);
             $client->services->attach($service_id);
 
             $data = [
-                "status"=>200,
-                "message"=>"Votre demande a été enregistré !"
+                "status" => 200,
+                "message" => "Votre demande a été enregistré !"
             ];
-        }else{
+        } else {
             $data = [
-                "status"=>500,
-                "message"=>"Une erreur est survenue !"
+                "status" => 500,
+                "message" => "Une erreur est survenue !"
             ];
         }
 
@@ -211,7 +217,13 @@ class ServiceController extends Controller
     // afficher tous les clients
     public function indexClients(Request $request)
     {
-        $clients = Client::select('*')->paginate(10);
+        $search = $request->input('search');
+        $clients = Client::select('*')->where(function ($query) use ($search) {
+            $query->where('nom', 'LIKE', '%' . $search . '%')
+                ->orWhere('prenom', 'LIKE', '%' . $search . '%')
+                ->orWhere('email', 'LIKE', '%' . $search . '%')
+                ->orWhere('contact', 'LIKE', '%' . $search . '%');
+        })->paginate(10);
         return response()->json($clients);
     }
 
@@ -223,8 +235,9 @@ class ServiceController extends Controller
     }
 
     // supprimer un client
-    public function deleteClient(Request $request){
-        if(Client::findOrFail($request->input('client_id'))->delete()){
+    public function deleteClient(Request $request)
+    {
+        if (Client::findOrFail($request->input('client_id'))->delete()) {
             $data = [
                 "status" => 200,
                 "message" => "Suppression effectuée !"

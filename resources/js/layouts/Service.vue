@@ -1,6 +1,6 @@
 <script>
 import AddServiceModal from '../components/modal/AddServiceModal.vue';
-import { getAllService, getTypeService, deleteService } from '../services/gestionServices';
+import { getAllService, getAllTypeService, deleteService } from '../services/gestionServices';
 
 export default {
     components: {
@@ -29,12 +29,10 @@ export default {
                 const search = this.search.toLowerCase()
                 const intitule_ser = data.intitule_ser.toLowerCase().includes(search)
                 const description_ser = data.description_ser.toLowerCase().includes(search)
-                const tarif = data.tarif.toString().toLowerCase().includes(search)
 
                 return (
                     intitule_ser ||
-                    description_ser ||
-                    tarif
+                    description_ser
                 )
             })
         },
@@ -71,11 +69,51 @@ export default {
         this.fetchTypeService()
     },
     methods: {
+    async confirmUpdateService(id) {
+        const confirmed = await this.$swal.fire({
+            title: 'Confirmation',
+            text: 'Voulez-vous vraiment effectuer cette modification ?',
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Oui, modifier!',
+            cancelButtonText: 'Annuler'
+        });
+
+        if (confirmed.isConfirmed) {
+            // Effectuer la modification ici
+            // ...
+            this.$swal.fire('Modifié!', 'Le service a été modifié avec succès.', 'success');
+        } else {
+            this.$swal.fire('Annulé', 'La modification a été annulée.', 'info');
+        }
+    },
+    async confirmDeleteService(id) {
+        const confirmed = await this.$swal.fire({
+            title: 'Confirmation',
+            text: 'Voulez-vous vraiment supprimer ce service ?',
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#d33',
+            cancelButtonColor: '#3085d6',
+            confirmButtonText: 'Oui, supprimer!',
+            cancelButtonText: 'Annuler'
+        });
+
+        if (confirmed.isConfirmed) {
+            // Effectuer la suppression ici
+            // ...
+            this.$swal.fire('Supprimé!', 'Le service a été supprimé avec succès.', 'success');
+        } else {
+            this.$swal.fire('Annulé', 'La suppression a été annulée.', 'info');
+        }
+    },
+
         async index(currentPage) {
             const response = await getAllService(this.search, currentPage) // Passer le terme de recherche à l'appel à l'API
             this.data = [...response.data] // Mettre à jour les données
             this.total = response.total
-
             this.perPage = response.per_page
         },
         getLibelleTypeService(id_type_ser) {
@@ -88,9 +126,8 @@ export default {
             return matchingItem ? matchingItem.libelle_type_ser : '';
         },
         async fetchTypeService() {
-            const response = await getTypeService()
+            const response = await getAllTypeService()
             this.typeService = response
-            console.log(this.typeService);
         },
         async deleteData(id) {
             this.isLoading = true
@@ -157,7 +194,6 @@ export default {
                             <tr>
                                 <th>Intitulé du service</th>
                                 <th>Description du service</th>
-                                <th>Tarif</th>
                                 <th>Type de service</th>
                                 <th>#</th>
                             </tr>
@@ -166,7 +202,6 @@ export default {
                             <tr v-for="(row, index) in filteredData" :key="index">
                                 <td>{{ row.intitule_ser }}</td>
                                 <td>{{ row.description_ser }}</td>
-                                <td>{{ row.tarif }}</td>
                                 <td>{{ getLibelleTypeService(row.id_type_ser) }}</td>
 
                                 <td class="d-flex align-items-center">

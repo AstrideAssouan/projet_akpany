@@ -59,12 +59,14 @@ export default {
                         <thead>
                             <tr>
                                 <th>Intitulé type de service</th>
+                                <th>Tarif</th>
                                 <th>#</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr v-for="(row, index) in data" :key="index">
                                 <td>{{ row.libelle_type_ser }}</td>
+                                <td>{{ row.tarif }}</td>
                                 <td class="d-flex align-items-center">
                                     <button class="btn btn-warning " @click="$router.push(`/back-office/type-service/edit/${row.id}`)"><i class="bx bx-edit"></i></button>
                                     <button class="btn btn-danger mx-3" :disabled="isLoading" @click="deleteData(row.id)"><i class="bx bx-trash"></i></button>

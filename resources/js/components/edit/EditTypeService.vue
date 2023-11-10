@@ -6,7 +6,8 @@ export default {
     data() {
         return {
             data: {
-                libelle_type_ser: ''
+                libelle_type_ser: '',
+                tarif:null
             },
             isLoading: false,
         }
@@ -25,7 +26,8 @@ export default {
             const id = this.$route.params.id
             const response = await getTypeService(id)
             this.data = {
-                libelle_type_ser: response.libelle_type_ser
+                libelle_type_ser: response.libelle_type_ser,
+                tarif: response.tarif
             }
         },
         async editData() {
@@ -67,6 +69,10 @@ export default {
                         <input type="text" class="form-control" id="intitule_type_ser" v-model="data.libelle_type_ser"
                             required>
                     </div>
+                    <div class="mb-3">
+                            <label for="tarif" class="form-label">Tarif</label>
+                            <input type="number" class="form-control" id="tarif" v-model="data.tarif" required>
+                        </div>
                     <button type="submit" class="btn btn-primary" :disabled="isLoading">Enregistrer</button>
                 </form>
             </div>

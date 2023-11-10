@@ -152,9 +152,6 @@ export default {
                                 <td>{{ row.email }}</td>
                                 <td v-for="role in row.roles">{{ role.nom_role }}</td>
                                 <td class="d-flex align-items-center">
-                                    <button class="btn btn-primary" data-bs-toggle="tooltip" data-bs-placement="top"
-                                        title="Voir" @click="$router.push(`/user/show/${row.id}`)"><i
-                                            class="bx bx-show"></i></button>
                                     <button class="btn btn-secondary mx-1" type="button" data-bs-toggle="tooltip"
                                         data-bs-placement="top" title="Permissions"
                                         @click="$router.push(`/back-office/user/permission/edit/${row.id}`)"><i

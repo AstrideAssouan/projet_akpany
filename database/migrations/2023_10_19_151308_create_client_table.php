@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('prenom');
             $table->string('email')->unique();
             $table->string('contact');
-            $table->string('adresse');
+            $table->string('besoin');
             $table->foreignId('service_id')->constrained('service')->onDelete('cascade');
             $table->timestamps();
         });

@@ -9,7 +9,7 @@ export default {
                 nom: '',
                 prenom: '',
                 email: '',
-                role:null,
+                role: null,
             },
             role: [],
             isLoading: false
@@ -20,6 +20,23 @@ export default {
         this.fetchRole()
     },
     methods: {
+
+        handleErrorResponse(response) {
+            this.isLoading = false;
+            if (response.status === 400) {
+                // Mauvaise requête (bad request), par exemple, des données invalides ont été envoyées.
+                this.sweetAlert('error', 'Les données soumises sont invalides.');
+            } else if (response.status === 401) {
+                // Non autorisé (Unauthorized), par exemple, l'utilisateur n'est pas authentifié.
+                this.sweetAlert('error', 'Vous n\'êtes pas autorisé à effectuer cette action.');
+            } else if (response.status === 500) {
+                // Erreur serveur (Internal Server Error), une erreur côté serveur s'est produite.
+                this.sweetAlert('error', 'Une erreur interne du serveur s\'est produite. Veuillez réessayer plus tard.');
+            } else {
+                // Autres cas d'erreur non gérés.
+                this.sweetAlert('error', 'Une erreur inattendue s\'est produite.');
+            }
+        },
         sweetAlert(icon, message) {
             this.$swal.fire({
                 icon: icon,
@@ -29,11 +46,11 @@ export default {
         async fetchData() {
             const id = this.$route.params.id
             const response = await getAdmin(id)
-            this.data={
+            this.data = {
                 nom: response.nom,
                 prenom: response.prenom,
                 email: response.email,
-                role:response.roles[0].nom_role,
+                role: response.roles[0].nom_role,
             }
         },
         async fetchRole() {
@@ -41,23 +58,22 @@ export default {
             this.role = response
         },
         async editData() {
-            this.isLoading = true
+            this.isLoading = true;
             try {
-                const id = this.$route.params.id
-                const response = await editAdmin(this.data, id)
+                const id = this.$route.params.id;
+                const response = await editAdmin(this.data, id);
                 if (response.status === 200) {
-                    this.isLoading = false
-                    this.sweetAlert('success', response.message)
-                    this.$router.push('/back-office/user')
+                    this.isLoading = false;
+                    this.sweetAlert('success', response.message);
+                    this.$router.push('/back-office/user');
                 } else {
-                    this.isLoading = false
-                    this.sweetAlert('error', response.message)
+                    this.handleErrorResponse(response);
                 }
             } catch (error) {
-                this.isLoading = false
-                this.sweetAlert('error', error.message)
+                this.handleErrorResponse(error);
             }
         },
+
     }
 }
 </script>
@@ -80,8 +96,7 @@ export default {
                     </div>
                     <div class="mb-3">
                         <label for="prenom" class="form-label">Prenom</label>
-                        <input type="text" class="form-control" v-model="data.prenom" id="prenom"
-                            required>
+                        <input type="text" class="form-control" v-model="data.prenom" id="prenom" required>
                     </div>
                     <div class="mb-3">
                         <label for="email" class="form-label">Tarif</label>

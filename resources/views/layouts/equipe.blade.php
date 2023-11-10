@@ -1,4 +1,4 @@
-<section class="shop-section sec-ptb-100 decoration-wrap clearfix">
+<section id="equipe" class="shop-section sec-ptb-100 decoration-wrap clearfix">
     <div class="container">
 
         <div class="section-title text-center mb-70">
@@ -15,6 +15,10 @@
                         </a>
 
                     </div>
+                    <div style="padding-top: 15px;">
+                        <h3>Nom & Prénoms</h3>
+                        <span>Poste occupé</span>
+                    </div>
                 </div>
             </div>
 
@@ -25,6 +29,10 @@
                             <img src="assets/images/team/img3.jpg" alt="image_not_found">
                         </a>
 
+                    </div>
+                    <div style="padding-top: 15px;">
+                        <h3>Nom & Prénoms</h3>
+                        <span>Poste occupé</span>
                     </div>
                 </div>
             </div>
@@ -37,6 +45,10 @@
                         </a>
 
                     </div>
+                    <div style="padding-top: 15px;">
+                        <h3>Nom & Prénoms</h3>
+                        <span>Poste occupé</span>
+                    </div>
                 </div>
             </div>
 
@@ -47,6 +59,10 @@
                             <img src="assets/images/team/img5.jpg" alt="image_not_found">
                         </a>
 
+                    </div>
+                    <div style="padding-top: 15px;">
+                        <h3>Nom & Prénoms</h3>
+                        <span>Poste occupé</span>
                     </div>
 
                 </div>
@@ -59,6 +75,10 @@
                             <img src="assets/images/team/img6.jpg" alt="image_not_found">
                         </a>
 
+                    </div>
+                    <div style="padding-top: 15px;">
+                        <h3>Nom & Prénoms</h3>
+                        <span>Poste occupé</span>
                     </div>
 
                 </div>

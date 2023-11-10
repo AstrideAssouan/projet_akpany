@@ -2,8 +2,12 @@
 
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="assets/css/style1.css">
+    <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" />
     <!-- <link rel="stylesheet" href="css/responsive.css"> -->
 </head>
+
+
 
 <section class="job_listing_area sec-ptb-100 decoration-wrap clearfix">
     <div class="container">
@@ -16,39 +20,47 @@
 
                 @if (!empty($emploi))
                     @foreach ($emploi as $row)
-                        <div class="col-lg-12 col-md-12">
-                            <div class="single_jobs white-bg d-flex justify-content-between">
-                                <div class="jobs_left d-flex align-items-center">
-                                    <div class="thumb">
-                                        <img src="https://familiapro.akpany.ci/assets/ns/images/favicon.ico"
-                                            alt="">
+                    <div class="col-lg-12 col-md-12">
+                    <div class="single_jobs white-bg d-flex justify-content-between">
+                        <div class="jobs_left d-flex align-items-center">
+                            <div class="thumb">
+                                <img src="https://familiapro.akpany.ci/assets/ns/images/favicon.ico" alt="">
+                            </div>
+                            <div class="jobs_conetent">
+                                <a href="{{ route('job_details', ['job_id'=>$row->id]) }}">
+                                    <h4> {{$row->intitule_poste}} </h4>
+                                </a>
+                                <div class="links_locat d-flex align-items-center">
+                                    <div class="location">
+                                        <p><span class="material-icons">place</span> {{$row->localisation}} </p>
                                     </div>
-                                    <div class="jobs_conetent">
-                                        <a href="{{ route('job_details', ['job_id'=>$row->id]) }}">
-                                            <h4> {{$row->intitule_poste}} </h4>
-                                        </a>
-                                        <div class="links_locat d-flex align-items-center">
-                                            <div class="location">
-                                                <p><span class="material-icons">map</span> {{$row->localisation}} </p>
-                                            </div>
-                                            {{-- <div class="location">
+                                    {{-- <div class="location">
                                                 <p><span class="material-icons">place</span>Sur site</p>
                                             </div> --}}
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="jobs_right">
-                                    <div class="apply_now">
-                                        <!-- <a class="heart_mark" href="#"> <i class="ti-heart"></i> </a> -->
-                                        <a href="{{ route('job_details', ['job_id'=>$row->id]) }}" class="boxed-btn3">Postuler</a>
-                                    </div>
-                                    <div class="date">
-                                        <p>Date limite: {{$row->date_limite}}</p>
-                                    </div>
                                 </div>
                             </div>
                         </div>
+                        <div class="jobs_right">
+                            <div class="apply_now">
+                                <!-- <a class="heart_mark" href="#"> <i class="ti-heart"></i> </a> -->
+                                <a href="{{ route('job_details', ['job_id'=>$row->id]) }}" class="boxed-btn3">Voir l'offre</a>
+                            </div>
+                            <div class="date">
+                                <p>Date limite: {{$row->date_limite}}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
                     @endforeach
+
+                    @if (count($emploi) >= 3)
+                        <div class="col-md-7">
+                            <div class="brouse_job text-right">
+                                <a href="{{ route('all_job') }}" class="boxed-btn4">Voir plus</a>
+                            </div>
+                        </div>
+                    @endif
+
                 @else
                     <div class="col-lg-12 d-flex justify-content-center">
                         <p class="text-muted">Aucune offre disponible pour l'instant</p>
@@ -58,14 +70,8 @@
             </div>
         </div>
     </div>
-    <div class="col-lg-7">
-        <div class="brouse_job text-right">
-            <a href="{{ route('all_job') }}" class="boxed-btn4">Voir plus</a>
-        </div>
-    </div>
-    <!-- Funfact Section Start Here -->
-
 </section>
+
 
 <section id="blog">
     <div class="funfact-section d-flex flex-column justify-content-center">
@@ -117,3 +123,41 @@
             </div>
         </div>
 </section>
+
+<!-- Ajoutez cet extrait de code dans votre balise <script> ou dans un fichier JavaScript externe -->
+<script>
+    // Initialisez AOS
+    AOS.init();
+
+    // Fonction pour animer le décompte progressif
+    function animateCounters() {
+        const counters = document.querySelectorAll('.counter');
+        const speed = 200; // Vitesse de l'animation en millisecondes
+
+        counters.forEach(counter => {
+            const target = +counter.getAttribute('data-target');
+            const increment = Math.ceil(target / speed);
+
+            let currentValue = 0;
+
+            // Fonction pour mettre à jour le compteur progressivement
+            function updateCount() {
+                currentValue += increment;
+                counter.innerText = currentValue;
+
+                // Vérifier si le compteur a atteint la cible
+                if (currentValue < target) {
+                    requestAnimationFrame(updateCount);
+                } else {
+                    counter.innerText = target; // Assurez-vous que la valeur finale soit exacte
+                }
+            }
+
+            // Lancer l'animation du compteur
+            updateCount();
+        });
+    }
+
+    // Appeler la fonction pour animer les compteurs lorsque la section est visible à l'écran
+    document.querySelector('#blog').addEventListener('aos:in', animateCounters);
+</script>

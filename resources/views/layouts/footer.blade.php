@@ -1,4 +1,4 @@
-<footer class="footer">
+<footer id="footer" class="footer">
     <div class="footer_top">
         <div class="container">
             <div class="row">
@@ -6,21 +6,21 @@
                     <div class="footer_widget wow fadeInUp" data-wow-duration="1s" data-wow-delay=".3s">
                         <div class="footer_logo">
                             <a href="#">
-                                <img src="assets/images/logo.png" alt="" style="height: 50px; width: 200px;">
+                                <img src="{{ asset('assets/images/logo.png') }}" alt="Logo" style="height: 50px; width: 200px;">
                             </a>
                         </div>
                         <p>
-                           <a href="https://akpany.ci">akpany.ci</a><br>
-                           Riviera Palmeraie, Fin de la rue Rose Marie Guiraud, SIPIM 1
-                           Abidjan, Côte d'Ivoire<br>
+                            <a href="https://akpany.ci">akpany.ci</a><br>
+                            Riviera Palmeraie, Fin de la rue Rose Marie Guiraud, SIPIM 1
+                            Abidjan, Côte d'Ivoire<br>
                             +225 27-22-23-52-15 <br>
-                            
+
                         </p>
                         <div class="socail_links">
                             <ul>
                                 <li>
                                     <a href="https://www.facebook.com/akpany/?locale=fr_FR">
-                                    <i class="fa fa-facebook"></i>
+                                        <i class="fa fa-facebook"></i>
                                     </a>
                                 </li>
                                 <li>
@@ -28,7 +28,7 @@
                                         <i class="fa fa-linkedin"></i>
                                     </a>
                                 </li>
-                               <li>
+                                <li>
                                     <a href="https://www.instagram.com/akpany_software_media/">
                                         <i class="fa fa-instagram"></i>
                                     </a>
@@ -71,11 +71,13 @@
                         <h3 class="footer_title">
                             Contactez-nous
                         </h3>
-                        <form action="#" class="newsletter_form">
-                            <input type="text" placeholder="Enter your mail">
+                        <form action="{{ route('subscribe') }}" class="newsletter_form" method="POST" enctype="multipart/form-data">
+                            @csrf
+                            <input type="email" name="email" placeholder="Entrez votre email" required>
                             <button type="submit">Envoyer</button>
                         </form>
-                        <p class="newsletter_text">Soyez parmis les premiers à être informé des nouveautés, offres et campagnes.</p>
+
+                        <p class="newsletter_text">Soyez parmis les premiers à être informés des nouveautés, offres et campagnes.</p>
                     </div>
                 </div>
             </div>
@@ -99,3 +101,15 @@
         </div>
     </div>
 </footer>
+
+@if (Session::has('success'))
+<script>
+    toastr.success("{{Session::get('success')}}");
+</script>
+@endif
+
+@if (Session::has('error'))
+<script>
+    toastr.error("{{Session::get('error')}}");
+</script>
+@endif

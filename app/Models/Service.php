@@ -13,11 +13,10 @@ class Service extends Model
     protected $fillable = [
         'intitule_ser',
         'description_ser',
-        'tarif',
         'id_type_ser'
     ];
 
     public function typeService(){
-        return $this->belongsToMany(TypeService::class, 'id_type_ser');
+        return $this->belongsTo(TypeService::class, 'id_type_ser');
     }
 }

@@ -12,5 +12,10 @@ class TypeService extends Model
     protected $table = "type_service";
     protected $fillable = [
         'libelle_type_ser',
+        'tarif',
     ];
+
+    public function services(){
+        return $this->belongsToMany(Service::class);
+    }
 }

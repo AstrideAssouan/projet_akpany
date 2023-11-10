@@ -1,7 +1,10 @@
 <?php
 
+use App\Http\Controllers\dashboardController;
 use App\Http\Controllers\home\HomeController;
 use App\Http\Controllers\home\WelcomeController;
+use App\Http\Controllers\ServiceController;
+use App\Http\Controllers\NewsletterController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -24,4 +27,13 @@ Route::get('/form', function () {
     return view('layouts.form');
 });
 
+Route::get('/back-office/admin', [DashboardController::class, 'index']);
+
 Route::post('/candidature', [HomeController::class, 'Candidature'])->name('candidature');
+Route::post('/client', [HomeController::class, 'Client'])->name('client');
+
+Route::post('/demande', [ServiceController::class, 'demandeService'])->name('demande');
+
+Route::post('/subscribe', [NewsletterController::class, 'subscribeToNewsletter'])->name('subscribe');
+
+

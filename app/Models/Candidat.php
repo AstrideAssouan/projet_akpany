@@ -17,6 +17,7 @@ class Candidat extends Model
         'numero',
         'lieu_residence',
         'niveau',
+        'lettre',
         'cv_pdf',
         'emploi_id'
     ];

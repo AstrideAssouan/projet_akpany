@@ -42,7 +42,7 @@ export default {
                             <li>Description du poste : {{ data.description_poste }}</li>
                             <li>Date de publication : {{ data.date_publication }}</li>
                             <li>Date limite : {{ data.date_limite }}</li>
-                            <li>Catéorie : </li>
+                            <li>Catégorie : </li>
                         </ul>
                 </div>
             </div>

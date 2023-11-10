@@ -25,6 +25,7 @@ export default {
                 if (response.status) {
                     this.sweetAlert('success', response.message)
                     this.isLoading = false
+                    this.$emit('nouvelleEntreeAjoutee');
                     this.closeModal()
                     this.resetForm()
                 }else{

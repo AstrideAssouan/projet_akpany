@@ -1,5 +1,5 @@
 <script>
-import { getTypeService, getService, editService } from '../../services/gestionServices';
+import { getAllTypeService, getService, editService } from '../../services/gestionServices';
 
 
 export default {
@@ -8,7 +8,6 @@ export default {
             data: {
                 intitule_ser: '',
                 description_ser: '',
-                tarif: null,
                 id_type_ser: null
             },
             type_ser: [],
@@ -32,12 +31,11 @@ export default {
             this.data = {
                 intitule_ser: response.intitule_ser,
                 description_ser: response.description_ser,
-                tarif: response.tarif,
                 id_type_ser: response.id_type_ser
             }
         },
         async fetchTypeService() {
-            const response = await getTypeService()
+            const response = await getAllTypeService()
             this.type_ser = response
         },
         async editData() {
@@ -82,10 +80,6 @@ export default {
                         <label for="description_ser" class="form-label">Description du service</label>
                         <input type="text" class="form-control" v-model="data.description_ser" id="description_ser"
                             required>
-                    </div>
-                    <div class="mb-3">
-                        <label for="tarif" class="form-label">Tarif</label>
-                        <input type="number" class="form-control" v-model="data.tarif" id="tarif" required>
                     </div>
                     <div class="mb-3">
                         <label for="type_ser" class="form-label">Type de service</label>

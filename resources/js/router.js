@@ -21,7 +21,7 @@ const routes = [
             { path: '/back-office/categorie', component: () => import('./layouts/Categorie.vue'), name: 'categorie' },
             { path: '/back-office/categorie/edit/:id', component: () => import('./components/edit/EditCategorie.vue'), name: 'edit-categorie' },
             { path: '/back-office/candidats', component: () => import('./layouts/Candidat.vue'), name: 'candidats' },
-            
+            { path: '/back-office/candidats/show/:id', component: () => import('./components/show/ShowCandidat.vue'), name: 'show-candidat' },
         ], meta: { requiresAuth: true }
     }
 ]

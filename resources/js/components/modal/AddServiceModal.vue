@@ -1,5 +1,5 @@
 <script>
-import { addService, getTypeService } from '../../services/gestionServices'
+import { addService, getAllTypeService } from '../../services/gestionServices'
 
 
 export default {
@@ -8,7 +8,6 @@ export default {
             data: {
                 intitule_ser: '',
                 description_ser: '',
-                tarif: null,
                 id_type_ser: null
             },
             type_ser: [],
@@ -26,7 +25,7 @@ export default {
             })
         },
         async fetchTypeService() {
-            const response = await getTypeService()
+            const response = await getAllTypeService()
             this.type_ser = response
         },
 
@@ -37,6 +36,7 @@ export default {
                 if (response.status == 200) {
                     this.isLoading = false
                     this.sweetAlert('success', response.message)
+                    this.$emit('nouvelleEntreeAjoutee');
                     this.closeModal()
                     this.resetForm()
                 } else {
@@ -84,16 +84,14 @@ export default {
                         </div>
                         <div class="mb-3">
                             <label for="description_ser" class="form-label">Description du service</label>
-                            <input type="text" class="form-control" v-model="data.description_ser" id="description_ser"
-                                required>
-                        </div>
-                        <div class="mb-3">
-                            <label for="tarif" class="form-label">Tarif</label>
-                            <input type="number" class="form-control" v-model="data.tarif" id="tarif" required>
+                            <!-- <input type="text" class="form-control" v-model="data.description_ser" id="description_ser"
+                                required> -->
+                            <textarea type="text" class="form-control" v-model="data.description_ser" id="description_ser"
+                            required cols="30" rows="10" ></textarea>
                         </div>
                         <div class="mb-3">
                             <label for="type_ser" class="form-label">Type de service</label>
-                            <select class="form-select" required id="typer_ser" v-model="data.id_type_ser">
+                            <select class="form-select" required id="type_ser" v-model="data.id_type_ser">
                                 <option v-for="(row, index) in type_ser" :key="index" :value="row.id">{{
                                     row.libelle_type_ser }}</option>
                             </select>

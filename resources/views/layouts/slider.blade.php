@@ -14,7 +14,7 @@
                                 Inspirez, Créer, Connecter </p>
                             <div class="btns-group ul-li animate-item clearfix">
                                 <ul class="clearfix">
-                                    <li><a href="#!" class="btn bg-light-green">SHOP NOW</a></li>
+                                    <!-- <li><a href="#!" class="btn bg-light-green">SHOP NOW</a></li> -->
                                     <li><a href="#!" class="btn bg-default-black">LEARN MORE</a></li>
                                 </ul>
                             </div>
@@ -30,17 +30,16 @@
                 <div class="row justify-content-lg-start justify-content-md-center">
                     <div class="col-lg-7 col-md-9 col-sm-12 col-xs-12">
                         <div class="slider-content">
-                            <span class="post-type animate-item"># Medical Store Theme</span>
+                            <!-- <span class="post-type animate-item"># Medical Store Theme</span> -->
                             <h3 class="item-title animate-item">
-                                Medicia Medical Service and Woocommerce theme
+                                Une équipe de développeurs qualifiées
                             </h3>
                             <p class="animate-item">
-                                Medicia as always focused on the best treatments with affordable price through
-                                the best medical services.
+                                Donnez vie à vos idées
                             </p>
                             <div class="btns-group ul-li animate-item clearfix">
                                 <ul class="clearfix">
-                                    <li><a href="#!" class="btn bg-light-green">SHOP NOW</a></li>
+                                    <!-- <li><a href="#!" class="btn bg-light-green">SHOP NOW</a></li> -->
                                     <li><a href="#!" class="btn bg-default-black">LEARN MORE</a></li>
                                 </ul>
                             </div>
@@ -56,17 +55,16 @@
                 <div class="row text-center justify-content-center justify-content-md-center">
                     <div class="col-lg-7 col-md-9 col-sm-12 col-xs-12">
                         <div class="slider-content">
-                            <span class="post-type animate-item"># Medical Store Theme</span>
+                            <!-- <span class="post-type animate-item"># Medical Store Theme</span> -->
                             <h3 class="item-title animate-item">
-                                Medicia Medical Service and Woocommerce theme
+                                Des photographes expérimentés
                             </h3>
                             <p class="animate-item">
-                                Medicia as always focused on the best treatments with affordable price through
-                                the best medical services.
+                            Immortalisez vos précieux moments
                             </p>
                             <div class="btns-group ul-li-center animate-item clearfix">
                                 <ul class="clearfix">
-                                    <li><a href="#!" class="btn bg-light-green">SHOP NOW</a></li>
+                                    <!-- <li><a href="#!" class="btn bg-light-green">SHOP NOW</a></li> -->
                                     <li><a href="#!" class="btn bg-default-black">LEARN MORE</a></li>
                                 </ul>
                             </div>

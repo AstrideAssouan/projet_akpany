@@ -25,15 +25,15 @@ $(document).ready( function () {
   /* =  scroll to top
   /*-------------------------------------------------*/
 
-  var to_top_icon = $('#top');
-    $(to_top_icon).hide();
-        $(window).scroll(function(){
-        if ($(this).scrollTop() > 75 ) {
-        to_top_icon.fadeIn();
-        } else {
-        to_top_icon.fadeOut();
-        }
-    });
+  // var to_top_icon = $('#top');
+  //   $(to_top_icon).hide();
+  //       $(window).scroll(function(){
+  //       if ($(this).scrollTop() > 75 ) {
+  //       to_top_icon.fadeIn();
+  //       } else {
+  //       to_top_icon.fadeOut();
+  //       }
+  //   });
 
   /*-------------------------------------------------*/
   /* =  function initwatermark

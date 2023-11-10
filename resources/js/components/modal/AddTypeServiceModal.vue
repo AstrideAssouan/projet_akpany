@@ -5,9 +5,10 @@ export default {
     data() {
         return {
             data: {
-                libelle_type_ser: ''
+                libelle_type_ser: '',
+                tarif: null
             },
-            isLoading:false
+            isLoading: false
         }
     },
     methods: {
@@ -21,19 +22,16 @@ export default {
             this.isLoading = true
             try {
                 const response = await addTypeService(this.data)
-                response.then((res) => {
-                    if (res.status == 200) {
-                        this.sweetAlert('success', res.message)
-                        this.isLoading = false
-                        this.closeModal()
+                if (response.status == 200) {
+                    this.sweetAlert('success', response.message)
+                    this.isLoading = false
+                    this.$emit('nouvelleEntreeAjoutee');
+                    this.closeModal()
                     this.resetForm()
-                    } else {
-                        this.sweetAlert('error', res.message)
-                        this.isLoading = false
-                    }
-                }).catch((error)=>{
-                    this.sweetAlert('error', error.message)
-                })
+                } else {
+                    this.sweetAlert('error', response.message)
+                    this.isLoading = false
+                }
             } catch (error) {
                 this.sweetAlert('error', error.message)
                 this.isLoading = false
@@ -47,7 +45,7 @@ export default {
             backdrop.remove();
         },
         resetForm() {
-            var self = this; 
+            var self = this;
             Object.keys(this.data).forEach(function (key, index) {
                 self.data[key] = '';
             });
@@ -70,7 +68,12 @@ export default {
                     <div class="modal-body">
                         <div class="mb-3">
                             <label for="intitule_type_ser" class="form-label">Intitulé type service</label>
-                            <input type="text" class="form-control" id="intitule_type_ser" v-model="data.libelle_type_ser" required>
+                            <input type="text" class="form-control" id="intitule_type_ser" v-model="data.libelle_type_ser"
+                                required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="tarif" class="form-label">Tarif</label>
+                            <input type="number" class="form-control" id="tarif" v-model="data.tarif" required>
                         </div>
                     </div>
 

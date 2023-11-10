@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('numero');
             $table->string('lieu_residence');
             $table->string('niveau');
+            $table->string('lettre');
             $table->string('cv_pdf');
             $table->foreignId('emploi_id')->constrained('emploi')->onDelete('cascade');
             $table->timestamps();

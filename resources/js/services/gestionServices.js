@@ -73,6 +73,24 @@ export async function getAllService(search='', currentPage){
     }
 }
 
+export async function getAllSer(){
+    try {
+        const response = await api.get(`/get-all-service`)
+        return response.data
+    } catch (error) {
+        throw Error("Une erreur est survenue !")
+    }
+}
+
+export async function getAllClient(search='',currentPage){
+    try {
+        const response = await api.get(`/get-demande?page=${currentPage}&search=${search}`)
+        return response.data
+    } catch (error) {
+        throw Error("Une erreur est survenue !")
+    }
+}
+
 export async function getService(id){
     try {
         const response = await api.get(`/get-one-service?id=${id}`)
@@ -183,9 +201,29 @@ export async function deleteEmploi(id){
 
 export async function getCandidat(id){
     try {
-        const response = await api.get(`/get-one-candidat?id=${id}`)
+        const response = await api.get(`/get-one-candidat?client_id=${id}`)
         return response.data
     } catch (error) {
         throw Error("Une erreur est survenue !")
     }
 }
+
+// export async function getCandidat(id){
+//     try {
+//         const response = await api.get(`/get-one-candidat?id=${id}`)
+//         return response.data
+//     } catch (error) {
+//         throw Error("Une erreur est survenue !")
+//     }
+
+// }
+
+export async function getAllCandidat(search='', currentPage){
+    try {
+        const response = await api.get(`/get-candidat?page=${currentPage}&search=${search}`)
+        return response.data
+    } catch (error) {
+        throw Error("Une erreur est survenue !")
+    }
+}
+

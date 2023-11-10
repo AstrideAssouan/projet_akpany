@@ -17,9 +17,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
-});
+Route::get('/public/{filename}', function ($filename) {
+    $path = storage_path('app/public/' . $filename);
+    if (!file_exists($path)) {
+        abort(404);
+    }
+    return response()->file($path);
+})->where('filename', '.*');
 
 Route::post('/login', [AdminController::class, 'login']);
 
@@ -49,6 +53,8 @@ Route::group(['middleware' => ['auth:sanctum']], function() {
     Route::get('/get-service', [ServiceController::class, 'indexService']);
     Route::get('/get-one-service', [ServiceController::class, 'getService']);
     Route::delete('/delete-service', [ServiceController::class, 'deleteService']);
+    Route::get('/get-demande', [ServiceController::class, 'indexClients']);
+    Route::get('/get-all-service', [ServiceController::class, 'service']);
 
     // emploi
     Route::post('/add-categorie', [EmploiController::class, 'createCategory']);
@@ -61,4 +67,6 @@ Route::group(['middleware' => ['auth:sanctum']], function() {
     Route::get('/get-emploi', [EmploiController::class, 'indexEmploi']);
     Route::get('/get-one-emploi', [EmploiController::class, 'getEmploi']);
     Route::delete('/delete-emploi', [EmploiController::class, 'deleteEmploi']);
+    Route::get('/get-one-candidat', [EmploiController::class, 'getCandidat']);
+    Route::get('/get-candidat', [EmploiController::class, 'indexCandidat']);
 });

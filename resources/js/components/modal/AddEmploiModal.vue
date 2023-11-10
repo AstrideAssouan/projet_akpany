@@ -41,6 +41,7 @@ export default {
                 if (response.status === 200) {
                     this.isLoading = false
                     this.sweetAlert('success', response.message)
+                    this.$emit('nouvelleEntreeAjoutee');
                     this.closeModal()
                     this.resetForm()
                 } else {
@@ -92,6 +93,13 @@ export default {
                                 cols="30" rows="10"></textarea>
                         </div>
                         <div class="mb-3">
+                            <label for="type_ser" class="form-label">Categorie</label>
+                            <select class="form-select" v-model="data.categorie_id" required id="typer_ser">
+                                <option v-for="(row, index) in category" :key="index" :value="row.id">{{ row.libelle_cat }}
+                                </option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
                             <label for="niveau_etude" class="form-label">Niveau d'étude</label>
                             <input type="text" v-model="data.niveau_etude" class="form-control" id="niveau_etude" required>
                         </div>
@@ -121,13 +129,7 @@ export default {
                             <label for="date_limite" class="form-label">Date limite</label>
                             <input type="date" v-model="data.date_limite" class="form-control" id="date_limite" required>
                         </div>
-                        <div class="mb-3">
-                            <label for="type_ser" class="form-label">Categorie</label>
-                            <select class="form-select" v-model="data.categorie_id" required id="typer_ser">
-                                <option v-for="(row, index) in category" :key="index" :value="row.id">{{ row.libelle_cat }}
-                                </option>
-                            </select>
-                        </div>
+                        
                     </div>
 
                     <div class="modal-footer">

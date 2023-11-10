@@ -101,7 +101,7 @@
         <div class="job_listing_area plus_padding">
             <div class="container">
                 <div class="row">
-                    <div class="col-lg-3">
+                    <!-- <div class="col-lg-3">
                         <div class="job_filter white-bg">
                             <div class="form_inner white-bg">
                                 <h3>Filter</h3>
@@ -174,7 +174,7 @@
                                 <button class="boxed-btn3 w-100" type="submit">Rechercher</button>
                             </div>
                         </div>
-                    </div>
+                    </div> -->
                     <div class="col-lg-9">
 
                         <div class="job_lists m-0">

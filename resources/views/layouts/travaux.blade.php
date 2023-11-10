@@ -1,4 +1,4 @@
-<section class="shop-section sec-ptb-100 decoration-wrap clearfix">
+<section id="travaux" class="shop-section sec-ptb-100 decoration-wrap clearfix">
     <div class="container">
         <div class="section-title text-center mb-70">
             <h2 class="title-text mb-3">NOS REALISATIONS</h2>

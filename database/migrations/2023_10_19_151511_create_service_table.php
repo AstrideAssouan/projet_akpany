@@ -15,7 +15,6 @@ return new class extends Migration
             $table->id();
             $table->string('intitule_ser');
             $table->string('description_ser');
-            $table->integer('tarif');
             $table->foreignId('id_type_ser')->constrained('type_service')->onDelete('cascade');
             $table->timestamps();
         });

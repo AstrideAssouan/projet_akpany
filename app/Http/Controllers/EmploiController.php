@@ -211,6 +211,7 @@ class EmploiController extends Controller
             'numero',
             'lieu_residence',
             'niveau',
+            'lettre',
             'cv_pdf',
         ]);
 
@@ -233,18 +234,25 @@ class EmploiController extends Controller
     }
 
     // afficher tous les candidats
-    public function indexCandidat(Request $request)
-    {
-        $candidats = Candidat::select('*')->paginate(10);
-        return response()->json($candidats);
-    }
+    // public function indexCandidat(Request $request)
+    // {
+    //     $candidats = Candidat::select('*')->paginate(10);
+    //     return response()->json($candidats);
+    // }
 
     // afficher un candidat
+    // public function getCandidat(Request $request)
+    // {
+    //     $candidat = Candidat::select('*')->where('id', $request->input('client_id'));
+    //     return response()->json($candidat);
+    // }
+
     public function getCandidat(Request $request)
     {
-        $candidat = Candidat::select('*')->where('id', $request->input('client_id'))->with('emploi')->first();
+        $candidat = Candidat::findOrFail($request->input('client_id'));
         return response()->json($candidat);
     }
+
 
     // supprimer un candidat
     public function deleteCandidat(Request $request)
@@ -262,5 +270,23 @@ class EmploiController extends Controller
         }
 
         return response()->json($data);
+    }
+
+    public function indexCandidat(Request $request)
+    {
+        $search = $request->input('search');
+        $emplois = Candidat::select('*')->where(function ($query) use ($search) {
+            $query->where('nom', 'LIKE', '%' . $search . '%')
+                ->orWhere('prenom', 'LIKE', '%' . $search . '%')
+                ->orWhere('email', 'LIKE', '%' . $search . '%')
+                ->orWhere('numero', 'LIKE', '%' . $search . '%')
+                ->orWhere('lieu_residence', 'LIKE', '%' . $search . '%')
+                ->orWhere('niveau', 'LIKE', '%' . $search . '%');
+        })
+            ->orderByDesc('id')
+            ->paginate(10);
+
+
+        return response()->json($emplois);
     }
 }
