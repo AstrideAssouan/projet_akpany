@@ -93,8 +93,8 @@ class EmploiController extends Controller
             'date_publication' => 'required',
             'date_limite' => 'required',
             'niveau_etude' => 'required',
-            'localisation' => 'required',
-            'secteur_activite' => 'required',
+            'lieu' => 'required',
+            'type_offre' => 'required',
             'description_poste' => 'required',
             'missions' => 'required',
             'remuneration' => 'required',
@@ -126,8 +126,8 @@ class EmploiController extends Controller
             'date_publication' => 'required',
             'date_limite' => 'required',
             'niveau_etude' => 'required',
-            'localisation' => 'required',
-            'secteur_activite' => 'required',
+            'lieu' => 'required',
+            'type_offre' => 'required',
             'description_poste' => 'required',
             'missions' => 'required',
             'remuneration' => 'required',
@@ -163,8 +163,8 @@ class EmploiController extends Controller
                 ->orWhere('date_publication', 'LIKE', '%' . $search . '%')
                 ->orWhere('date_limite', 'LIKE', '%' . $search . '%')
                 ->orWhere('niveau_etude', 'LIKE', '%' . $search . '%')
-                ->orWhere('localisation', 'LIKE', '%' . $search . '%')
-                ->orWhere('secteur_activite', 'LIKE', '%' . $search . '%')
+                ->orWhere('lieu', 'LIKE', '%' . $search . '%')
+                ->orWhere('type_offre', 'LIKE', '%' . $search . '%')
                 ->orWhere('description_poste', 'LIKE', '%' . $search . '%')
                 ->orWhere('missions', 'LIKE', '%' . $search . '%')
                 ->orWhere('remuneration', 'LIKE', '%' . $search . '%');

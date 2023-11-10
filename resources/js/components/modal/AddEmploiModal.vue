@@ -9,8 +9,8 @@ export default {
                 date_publication: '',
                 date_limite: '',
                 niveau_etude: '',
-                localisation: '',
-                secteur_activite: '',
+                lieu: '',
+                type_offre: '',
                 description_poste: '',
                 missions: '',
                 remuneration: '',
@@ -104,8 +104,12 @@ export default {
                             <input type="text" v-model="data.niveau_etude" class="form-control" id="niveau_etude" required>
                         </div>
                         <div class="mb-3">
-                            <label for="secteur_activite" class="form-label">Secteur d'activité</label>
-                            <input type="text" v-model="data.secteur_activite" class="form-control" id="secteur_activite">
+                            <label for="type_offre" class="form-label">Type de l'offre</label>
+                            <select class="form-select" v-model="data.type_offre" id="type_offre" required>
+                                <option value="stage">Stage</option>
+                                <option value="cdd">CDD</option>
+                                <option value="cdi">CDI</option>
+                            </select>
                         </div>
                         <div class="mb-3">
                             <label for="missions" class="form-label">Missions</label>
@@ -113,8 +117,11 @@ export default {
                                 rows="10"></textarea>
                         </div>
                         <div class="mb-3">
-                            <label for="localisation" class="form-label">Localisation</label>
-                            <input type="text" class="form-control" v-model="data.localisation" id="localisation" required>
+                            <label for="lieu" class="form-label">Lieu</label>
+                            <select class="form-select" v-model="data.lieu" id="lieu" required>
+                                <option value="sur_site">Sur site</option>
+                                <option value="a_distance">À distance</option>
+                            </select>
                         </div>
                         <div class="mb-3">
                             <label for="remunération" class="form-label">Remunération</label>

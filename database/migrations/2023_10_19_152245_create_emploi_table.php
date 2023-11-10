@@ -17,8 +17,8 @@ return new class extends Migration
             $table->string('date_publication');
             $table->string('date_limite');
             $table->string('niveau_etude');
-            $table->string('localisation');
-            $table->string('secteur_activite');
+            $table->string('lieu');
+            $table->string('type_offre');
             $table->string('description_poste');
             $table->string('missions');
             $table->string('remuneration');

@@ -31,7 +31,7 @@ export default {
                 const date_limite = data.date_limite.toLowerCase().includes(search)
                 const niveau_etude = data.niveau_etude.toString().includes(search)
                 const remuneration = data.remuneration.toLowerCase().includes(search)
-                const secteur_activite = data.secteur_activite.toLowerCase().includes(search)
+                const type_offre = data.type_offre.toLowerCase().includes(search)
 
                 return (
                     intitule_poste ||
@@ -39,7 +39,7 @@ export default {
                     date_limite ||
                     niveau_etude ||
                     remuneration ||
-                    secteur_activite 
+                    type_offre 
                 )
             })
         },

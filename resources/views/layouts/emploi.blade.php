@@ -22,6 +22,7 @@
     <!-- custom - css include -->
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/style1.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/style.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/app.min.css') }}">
     <!-- <link rel="stylesheet" href="css/responsive.css"> -->
 </head>
 
@@ -87,9 +88,6 @@
             <div class="container">
                 <div class="row">
                     <div class="col-xl-12">
-                        <!-- <div class="bradcam_text">
-                        <h3>4536+ Jobs Available</h3>
-                    </div> -->
 
                     </div>
                 </div>
@@ -97,131 +95,58 @@
         </div>
         <!--/ bradcam_area  -->
 
-        <!-- job_listing_area_start  -->
-        <div class="job_listing_area plus_padding">
+
+        <!-- START JOB-GRID -->
+        <section class="section">
             <div class="container">
                 <div class="row">
-                    <!-- <div class="col-lg-3">
-                        <div class="job_filter white-bg">
-                            <div class="form_inner white-bg">
-                                <h3>Filter</h3>
-                                <form action="#">
-                                    <div class="row">
-                                        <div class="col-lg-12">
-                                            <div class="single_field">
-                                                <input type="text" placeholder="Search keyword">
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-12">
-                                            <div class="single_field">
-                                                <select class="wide">
-                                                    <option data-display="Location">Location</option>
-                                                    <option value="1">Rangpur</option>
-                                                    <option value="2">Dhaka </option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-12">
-                                            <div class="single_field">
-                                                <select class="wide">
-                                                    <option data-display="Category">Category</option>
-                                                    <option value="1">Category 1</option>
-                                                    <option value="2">Category 2 </option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-12">
-                                            <div class="single_field">
-                                                <select class="wide">
-                                                    <option data-display="Experience">Experience</option>
-                                                    <option value="1">Experience 1</option>
-                                                    <option value="2">Experience 2 </option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-12">
-                                            <div class="single_field">
-                                                <select class="wide">
-                                                    <option data-display="Job type">Job type</option>
-                                                    <option value="1">full time 1</option>
-                                                    <option value="2">part time 2 </option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-12">
-                                            <div class="single_field">
-                                                <select class="wide">
-                                                    <option data-display="Qualification">Qualification</option>
-                                                    <option value="1">Qualification 1</option>
-                                                    <option value="2">Qualification 2</option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-12">
-                                            <div class="single_field">
-                                                <select class="wide">
-                                                    <option data-display="Gender">Gender</option>
-                                                    <option value="1">male</option>
-                                                    <option value="2">female</option>
-                                                </select>
-                                            </div>
+
+                    @if (!empty($allJob))
+                    @foreach ($allJob as $row)
+                    <div class="col-lg-4 col-md-6 mt-4">
+                        <div class="card job-grid-box">
+                            <div class="card-body p-4">
+
+                                <div>
+                                    <a href="{{ route('job_details', ['job_id'=>$row->id]) }}"><img src="https://familiapro.akpany.ci/assets/ns/images/favicon.ico" alt="" class="img-fluid rounded-3"></a>
+                                </div>
+                                <div class="mt-4">
+                                    <a href="{{ route('job_details', ['job_id'=>$row->id]) }}" class="primary-link">
+                                        <h5 class="fs-17 mb-1">{{$row->intitule_poste}}</h5>
+                                    </a>
+                                    <p class="text-muted"><span class="material-icons">place</span>{{$row->localisation}}</p>
+                                    <ul class="list-inline">
+                                        <li class="list-inline-item">
+                                            <span class="badge bg-soft-success fs-13 mt-1">{{$row->remuneration}}</span>
+                                        </li>
+                                        <li class="list-inline-item">
+                                            <span class="badge bg-soft-purple fs-13 mt-1">{{$row->secteur_activite}}</span>
+                                        </li>
+                                        <!-- <li class="list-inline-item">
+                                                        <span class="badge bg-soft-blue fs-13 mt-1">Developer</span>
+                                                    </li> -->
+                                    </ul>
+                                </div>
+                                <div class="job-grid-content mt-3">
+                                    <p class="text-muted">{{$row->description_poste}}</p>
+                                    <div class="d-flex align-items-center justify-content-between mt-4 border-top pt-3">
+                                        <p class="text-muted float-start mb-0">Date: {{$row->date_limite}}</p>
+                                        <div class="text-end">
+                                            <a href="{{ route('job_details', ['job_id'=>$row->id]) }}" class="boxed-btn3">Postuler</a>
                                         </div>
                                     </div>
-                                </form>
-                            </div>
+                                </div>
+                            </div><!--end card-body-->
+                        </div><!--end job-grid-box-->
+                    </div><!--end col-->
+                    @endforeach
+                    @else
+                    @endif
 
-                            <div class="reset_btn">
-                                <button class="boxed-btn3 w-100" type="submit">Rechercher</button>
-                            </div>
-                        </div>
-                    </div> -->
-                    <div class="col-lg-9">
+                </div><!--end container-->
+        </section>
+        <!-- END JOB-GRID -->
 
-                        <div class="job_lists m-0">
-                            <div class="row">
-                                @if (!empty($allJob))
-                                    @foreach ($allJob as $row)
-                                        <div class="col-lg-12 col-md-12">
-                                            <div class="single_jobs white-bg d-flex justify-content-between">
-                                                <div class="jobs_left d-flex align-items-center">
-                                                    <div class="thumb">
-                                                        <img src="https://familiapro.akpany.ci/assets/ns/images/favicon.ico"
-                                                            alt="">
-                                                    </div>
-                                                    <div class="jobs_conetent">
-                                                        <a href="{{ route('job_details', ['job_id'=>$row->id]) }}">
-                                                            <h4>{{$row->intitule_poste}}</h4>
-                                                        </a>
-                                                        <div class="links_locat d-flex align-items-center">
-                                                            <div class="location">
-                                                                <p><span class="material-icons">map</span>{{$row->localisation}}</p>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="jobs_right">
-                                                    <div class="apply_now">
-                                                        <!-- <a class="heart_mark" href="#"> <i class="fa fa-heart"></i> </a> -->
-                                                        <a href="{{ route('job_details', ['job_id'=>$row->id]) }}"
-                                                            class="boxed-btn3">Postuler</a>
-                                                    </div>
-                                                    <div class="date">
-                                                        <p>Date line: {{$row->date_limite}}</p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    @endforeach
-                                @else
-                                @endif
-
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- job_listing_area_end  -->
 
         <!-- footer-section - start
   ================================================== -->

@@ -261,27 +261,27 @@ $(document).ready( function () {
   /*-------------------------------------------------*/
   /* =  Izotope
   /*-------------------------------------------------*/
-  $('#filter_content').isotope({ 
-      filter: '*',
-     }); 
+  // $('#filter_content').isotope({ 
+  //     filter: '*',
+  //    }); 
 
-    // cache filter_content
-    var $filter_content = $('#filter_content');
-    // initialize isotope
-    $filter_content.isotope({
-        animationOptions: {
-          duration: 750,
-          easing: 'ease-in',
-          queue: true
-        }
-    });
+  //   // cache filter_content
+  //   var $filter_content = $('#filter_content');
+  //   // initialize isotope
+  //   $filter_content.isotope({
+  //       animationOptions: {
+  //         duration: 750,
+  //         easing: 'ease-in',
+  //         queue: true
+  //       }
+  //   });
 
-    // filter items when filter link is clicked
-    $('#filters a').click(function(){
-      var selector = $(this).attr('data-filter');
-      $filter_content.isotope({ filter: selector });
-      return true;
-    });
+  //   // filter items when filter link is clicked
+  //   $('#filters a').click(function(){
+  //     var selector = $(this).attr('data-filter');
+  //     $filter_content.isotope({ filter: selector });
+  //     return true;
+  //   });
 
   /*-------------------------------------------------*/
   /* =  video 
@@ -341,39 +341,39 @@ $(document).ready( function () {
   /*-------------------------------------------------*/
 
 
-    $('.popup-modal').magnificPopup({
-      type:'inline',
-      midClick: true // Allow opening popup on middle mouse click. Always set it to true if you don't provide alternative source in href.
-    });
+    // $('.popup-modal').magnificPopup({
+    //   type:'inline',
+    //   midClick: true // Allow opening popup on middle mouse click. Always set it to true if you don't provide alternative source in href.
+    // });
 
 
 
-    $('.popup-gallery').magnificPopup({
-      delegate: 'a',
-      type: 'image',
-      tLoading: 'Loading image #%curr%...',
-      mainClass: 'mfp-img-mobile',
-      gallery: {
-        enabled: true,
-        navigateByImgClick: true,
-        preload: [0,1] // Will preload 0 - before current, and 1 after the current image
-      },
-      image: {
-        tError: '<a href="%url%">The image #%curr%</a> could not be loaded.',
-        titleSrc: function(item) {
-          return item.el.attr('title') + '<small></small>';
-        }
-      }
-    });
+    // $('.popup-gallery').magnificPopup({
+    //   delegate: 'a',
+    //   type: 'image',
+    //   tLoading: 'Loading image #%curr%...',
+    //   mainClass: 'mfp-img-mobile',
+    //   gallery: {
+    //     enabled: true,
+    //     navigateByImgClick: true,
+    //     preload: [0,1] // Will preload 0 - before current, and 1 after the current image
+    //   },
+    //   image: {
+    //     tError: '<a href="%url%">The image #%curr%</a> could not be loaded.',
+    //     titleSrc: function(item) {
+    //       return item.el.attr('title') + '<small></small>';
+    //     }
+    //   }
+    // });
 
-    $('.popup-youtube, .popup-vimeo').magnificPopup({
-      type: 'iframe',
-      mainClass: 'mfp-fade',
-      removalDelay: 160,
-      preloader: false,
+    // $('.popup-youtube, .popup-vimeo').magnificPopup({
+    //   type: 'iframe',
+    //   mainClass: 'mfp-fade',
+    //   removalDelay: 160,
+    //   preloader: false,
 
-      fixedContentPos: true
-    }) ;
+    //   fixedContentPos: true
+    // }) ;
 
 
 
@@ -423,18 +423,18 @@ $(document).ready( function () {
   /*-------------------------------------------------*/
 
 
-  $("#owl2").owlCarousel({
+  // $("#owl2").owlCarousel({
  
-    // autoPlay: 4000, //Set AutoPlay to 3 seconds
+  //   // autoPlay: 4000, //Set AutoPlay to 3 seconds
      
-    items : 5,
-    itemsDesktop : [1199,3],
-    itemsDesktopSmall : [700,2],
-    itemsTablet: [400,1],
-    navigation : true
+  //   items : 5,
+  //   itemsDesktop : [1199,3],
+  //   itemsDesktopSmall : [700,2],
+  //   itemsTablet: [400,1],
+  //   navigation : true
 
      
-  });
+  // });
 
 
 
